@@ -70,9 +70,9 @@ This library aim to represent RegExp in JSON and use it for ignoring words.
 | ---|---| --- |
 | `"/\\d+/"` | `/\d+/g`| You should escape meta character like `\d` |
 
-:warning: You should escape meta character like `\d` in RegExp-lik string.
+:warning: You should escape meta character like `\d` in RegExp-like string.
 
-For example, If you want to write `\w`(any word) in RegExp-lik string, you should escape `\w` to `\\w`.
+For example, If you want to write `\w`(any word) in RegExp-like string, you should escape `\w` to `\\w`.
 
 - [Regular Expressions - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions#Using_special_characters)
 
