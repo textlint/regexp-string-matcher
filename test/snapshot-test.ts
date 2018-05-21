@@ -1,7 +1,7 @@
 import * as fs from "fs";
 import * as assert from "assert";
 import * as path from "path";
-import { matchPatterns } from "../src/pattern-string-matcher";
+import { matchPatterns } from "../src/regexp-string-matcher";
 
 const fixturesDir = path.join(__dirname, "snapshots");
 /**

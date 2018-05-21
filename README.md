@@ -1,4 +1,4 @@
-# @textlint/pattern-string-matcher
+# @textlint/regexp-string-matcher
 
 Regexp-like string matcher library.
 
@@ -6,7 +6,7 @@ Regexp-like string matcher library.
 
 Install with [npm](https://www.npmjs.com/):
 
-    npm install @textlint/pattern-string-matcher
+    npm install @textlint/regexp-string-matcher
 
 ## Usage
 
@@ -19,22 +19,23 @@ export interface matchPatternResult {
     endIndex: number;
 }
 /**
- * Match patternStrings and return matchPatternResults
+ * Match regExpLikeStrings and return matchPatternResults
  * @param text target text
- * @param patternStrings an array of pattern string
+ * @param regExpLikeStrings an array of pattern string
  */
-export declare const matchPatterns: (text: string, patternStrings: string[]) => matchPatternResult[];
+export declare const matchPatterns: (text: string, regExpLikeStrings: string[]) => matchPatternResult[];
 ```
 
 Example:
 
 ```js
-import { matchPatterns } from "@textlint/pattern-string-matcher";
+import { matchPatterns } from "@textlint/regexp-string-matcher";
 const inputText = `
 GitHub is a web-based hosting service for version control using git.
 It is mostly used for computer code.
 GitHub launched in Apr 10, 2008.
 `;
+// RegExp like strings
 const inputPatterns = [
     "git", // => /git/g
     "/github/i", // /github/ig
@@ -57,7 +58,7 @@ assert.deepStrictEqual(results, [
 
 ## Changelog
 
-See [Releases page](https://github.com/textlint/pattern-string-matcher/releases).
+See [Releases page](https://github.com/textlint/regexp-string-matcher/releases).
 
 ## Running tests
 
@@ -78,7 +79,7 @@ Install devDependencies and Run `npm test`:
 
 Pull requests and stars are always welcome.
 
-For bugs and feature requests, [please create an issue](https://github.com/textlint/pattern-string-matcher/issues).
+For bugs and feature requests, [please create an issue](https://github.com/textlint/regexp-string-matcher/issues).
 
 1. Fork it!
 2. Create your feature branch: `git checkout -b my-new-feature`

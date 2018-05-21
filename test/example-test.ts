@@ -1,4 +1,4 @@
-import { matchPatterns } from "../src/pattern-string-matcher";
+import { matchPatterns } from "../src/regexp-string-matcher";
 import * as assert from "assert";
 
 it("example", () => {

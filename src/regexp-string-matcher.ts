@@ -58,13 +58,13 @@ const isEqualMatchPatternResult = (a: matchPatternResult, b: matchPatternResult)
     return a.startIndex === b.startIndex && a.endIndex === b.endIndex && a.match === b.match;
 };
 /**
- * Match patternStrings and return matchPatternResults
+ * Match regExpLikeStrings and return matchPatternResults
  * @param text target text
- * @param patternStrings an array of pattern string
+ * @param regExpLikeStrings an array of pattern string
  */
-export const matchPatterns = (text: string, patternStrings: string[]): matchPatternResult[] => {
+export const matchPatterns = (text: string, regExpLikeStrings: string[]): matchPatternResult[] => {
     const matchPatternResults: matchPatternResult[] = [];
-    patternStrings
+    regExpLikeStrings
         .map(patternString => {
             return createRegExp(patternString);
         })

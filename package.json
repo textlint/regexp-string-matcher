@@ -1,5 +1,5 @@
 {
-  "name": "@textlint/pattern-string-matcher",
+  "name": "@textlint/regexp-string-matcher",
   "version": "1.0.0",
   "description": "Regexp-like string matcher.",
   "keywords": [
@@ -7,9 +7,9 @@
     "regexp",
     "util"
   ],
-  "homepage": "https://github.com/textlint/pattern-string-matcher",
+  "homepage": "https://github.com/textlint/regexp-string-matcher",
   "bugs": {
-    "url": "https://github.com/textlint/pattern-string-matcher/issues"
+    "url": "https://github.com/textlint/regexp-string-matcher/issues"
   },
   "license": "MIT",
   "author": "azu",
@@ -18,15 +18,15 @@
     "lib/",
     "src/"
   ],
-  "main": "lib/pattern-string-matcher.js",
-  "types": "lib/pattern-string-matcher.d.ts",
+  "main": "lib/regexp-string-matcher.js",
+  "types": "lib/regexp-string-matcher.d.ts",
   "directories": {
     "lib": "lib",
     "test": "test"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/textlint/pattern-string-matcher.git"
+    "url": "https://github.com/textlint/regexp-string-matcher.git"
   },
   "scripts": {
     "build": "cross-env NODE_ENV=production tsc -p .",
