@@ -7,9 +7,10 @@ GitHub is a web-based hosting service for version control using git.
 It is mostly used for computer code.
 GitHub launched in Apr 10, 2008.
 `;
+    // RegExp like strings
     const inputPatterns = [
         "git", // => /git/g
-        "/github/i", // /github/ig
+        "/github/i", // => /github/ig
         "/\\d+/" // => /\d/g
     ];
 

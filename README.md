@@ -37,9 +37,9 @@ GitHub launched in Apr 10, 2008.
 `;
 // RegExp like strings
 const inputPatterns = [
-    "git", // => /git/g
-    "/github/i", // /github/ig
-    "/\\d+/" // => /\d/g
+    "git",       // => /git/g
+    "/github/i", // => /github/ig
+    "/\\d+/"     // => /\d/g
 ];
 
 const results = matchPatterns(inputText, inputPatterns);
