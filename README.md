@@ -52,9 +52,52 @@ assert.deepStrictEqual(results, [
 ]);
 ```
 
-## Example patterns
+## RegExp-like String
 
-- [ ] Need to more documents
+This library aim to represent RegExp in JSON and use it for ignoring words.
+`g`(global) flag is added by default, Because ignoring words is always global in a document.
+
+
+| Input | Ouput | Note|
+| ---- | ---| --- |
+| `"str"` | `/str/g`| convert string to regexp with global |
+| `"/str/"` | `/str/g`| |
+| `"/str/g"` | `/str/g`| Duplicated `g` is just ignored |
+| `"/str/i"` | `/str/ig`| |
+| `"/str/u"` | `/str/ug`| |
+| `"/str/m"` | `/str/mg`| |
+| `"/str/y"` | `/str/yg`| |
+| ---|---| --- |
+| `"/\\d+/"` | `/\d+/g`| You should escape meta character like `\d` |
+
+:warning: You should escape meta character like `\d` in RegExp-lik string.
+
+For example, If you want to write `\w`(any word) in RegExp-lik string, you should escape `\w` to `\\w`.
+
+- [Regular Expressions - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions#Using_special_characters)
+
+Text:
+
+```
+This is a pen.
+```
+
+RegExp-like String:
+
+```json
+[
+    "a \\w+"
+]
+```
+
+Results:
+
+```
+[ { match: 'a pen', startIndex: 8, endIndex: 13 } ]
+```
+
+## Example
+
 
 ## Changelog
 

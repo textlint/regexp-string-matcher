@@ -23,3 +23,13 @@ GitHub launched in Apr 10, 2008.
         { match: "2008", startIndex: 134, endIndex: 138 }
     ]);
 });
+
+it("example", () => {
+    const inputText = `This is a pen.`;
+    // RegExp like strings
+    const inputPatterns = ["a \\w+"];
+
+    const results = matchPatterns(inputText, inputPatterns);
+    console.log(results);
+    assert.deepStrictEqual(results, [{ match: "a pen", startIndex: 8, endIndex: 13 }]);
+});
