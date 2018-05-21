@@ -1,0 +1,12 @@
+[
+    {
+        "match": "GitHub",
+        "startIndex": 0,
+        "endIndex": 6
+    },
+    {
+        "match": "GitHub",
+        "startIndex": 106,
+        "endIndex": 112
+    }
+]

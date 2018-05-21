@@ -1,0 +1,17 @@
+[
+    {
+        "match": "Git",
+        "startIndex": 0,
+        "endIndex": 3
+    },
+    {
+        "match": "git",
+        "startIndex": 64,
+        "endIndex": 67
+    },
+    {
+        "match": "Git",
+        "startIndex": 106,
+        "endIndex": 109
+    }
+]

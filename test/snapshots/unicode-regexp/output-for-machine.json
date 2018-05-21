@@ -1,0 +1,17 @@
+[
+    {
+        "match": "💩",
+        "startIndex": 3,
+        "endIndex": 5
+    },
+    {
+        "match": "💩",
+        "startIndex": 7,
+        "endIndex": 9
+    },
+    {
+        "match": "💩",
+        "startIndex": 11,
+        "endIndex": 13
+    }
+]

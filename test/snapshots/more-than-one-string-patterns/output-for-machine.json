@@ -1,0 +1,22 @@
+[
+    {
+        "match": "GitHub",
+        "startIndex": 0,
+        "endIndex": 6
+    },
+    {
+        "match": "GitHub",
+        "startIndex": 106,
+        "endIndex": 112
+    },
+    {
+        "match": "10",
+        "startIndex": 129,
+        "endIndex": 131
+    },
+    {
+        "match": "2008",
+        "startIndex": 133,
+        "endIndex": 137
+    }
+]

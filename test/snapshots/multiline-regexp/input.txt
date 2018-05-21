@@ -1,0 +1,16 @@
+===START===
+1st inline text.
+===END===
+
+2 test
+
+===START===
+2nd inline text.
+===END===
+
+3 test
+
+===START===
+3rd text.
+multi line text.
+===END===

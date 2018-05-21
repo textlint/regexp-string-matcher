@@ -1,0 +1,17 @@
+[
+    {
+        "match": "===START===\n1st inline text.\n===END===",
+        "startIndex": 0,
+        "endIndex": 38
+    },
+    {
+        "match": "===START===\n2nd inline text.\n===END===",
+        "startIndex": 48,
+        "endIndex": 86
+    },
+    {
+        "match": "===START===\n3rd text.\nmulti line text.\n===END===",
+        "startIndex": 96,
+        "endIndex": 144
+    }
+]

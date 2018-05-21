@@ -1,0 +1,96 @@
+# @textlint/pattern-string-matcher
+
+Regexp-like string matcher library.
+
+## Install
+
+Install with [npm](https://www.npmjs.com/):
+
+    npm install @textlint/pattern-string-matcher
+
+## Usage
+
+Interface:
+
+```ts
+export interface matchPatternResult {
+    match: string;
+    startIndex: number;
+    endIndex: number;
+}
+/**
+ * Match patternStrings and return matchPatternResults
+ * @param text target text
+ * @param patternStrings an array of pattern string
+ */
+export declare const matchPatterns: (text: string, patternStrings: string[]) => matchPatternResult[];
+```
+
+Example:
+
+```js
+import { matchPatterns } from "@textlint/pattern-string-matcher";
+const inputText = `
+GitHub is a web-based hosting service for version control using git.
+It is mostly used for computer code.
+GitHub launched in Apr 10, 2008.
+`;
+const inputPatterns = [
+    "git", // => /git/g
+    "/github/i", // /github/ig
+    "/\\d+/" // => /\d/g
+];
+
+const results = matchPatterns(inputText, inputPatterns);
+assert.deepStrictEqual(results, [
+    { match: "GitHub", startIndex: 1, endIndex: 7 },
+    { match: "git", startIndex: 65, endIndex: 68 },
+    { match: "GitHub", startIndex: 107, endIndex: 113 },
+    { match: "10", startIndex: 130, endIndex: 132 },
+    { match: "2008", startIndex: 134, endIndex: 138 }
+]);
+```
+
+## Example patterns
+
+- [ ] Need to more documents
+
+## Changelog
+
+See [Releases page](https://github.com/textlint/pattern-string-matcher/releases).
+
+## Running tests
+
+Install devDependencies and Run `npm test`:
+
+    npm i -d && npm test
+
+### How to add snapshot tests?
+
+1. Create new dir to `./snapshots/<name>/`
+2. Add `input.txt` and `input-patterns.json`
+3. Run `npm run test:updateSnapshot`
+4. You should verify the output results manually
+5. Run `npm test` and pass it
+5. Commit it
+
+## Contributing
+
+Pull requests and stars are always welcome.
+
+For bugs and feature requests, [please create an issue](https://github.com/textlint/pattern-string-matcher/issues).
+
+1. Fork it!
+2. Create your feature branch: `git checkout -b my-new-feature`
+3. Commit your changes: `git commit -am 'Add some feature'`
+4. Push to the branch: `git push origin my-new-feature`
+5. Submit a pull request :D
+
+## Author
+
+- [github/azu](https://github.com/azu)
+- [twitter/azu_re](https://twitter.com/azu_re)
+
+## License
+
+MIT © azu
