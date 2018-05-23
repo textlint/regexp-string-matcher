@@ -1,0 +1,27 @@
+[
+    {
+        "match": "Eメール",
+        "startIndex": 3,
+        "endIndex": 7
+    },
+    {
+        "match": "X軸",
+        "startIndex": 9,
+        "endIndex": 11
+    },
+    {
+        "match": "Y軸",
+        "startIndex": 12,
+        "endIndex": 14
+    },
+    {
+        "match": "X座標",
+        "startIndex": 22,
+        "endIndex": 25
+    },
+    {
+        "match": "C言語",
+        "startIndex": 29,
+        "endIndex": 32
+    }
+]

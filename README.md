@@ -31,10 +31,7 @@ Example:
 ```js
 import { matchPatterns } from "@textlint/regexp-string-matcher";
 const inputText = `
-GitHub is a web-based hosting service for version control using git.
-It is mostly used for computer code.
-GitHub launched in Apr 10, 2008.
-`;
+GitHub is a web-based hosting service for version control using git. It is mostly used for computer code. GitHub launched in 2018-04-10.`;
 // RegExp like strings
 const inputPatterns = [
     "git",       // => /git/g
@@ -96,9 +93,114 @@ Results:
 [ { match: 'a pen', startIndex: 8, endIndex: 13 } ]
 ```
 
-## Example
+## Examples
 
-- [ ] Need more document
+### string
+
+**text:**
+```markdown
+GitHub is a web-based hosting service for version control using git.
+It is mostly used for computer code.
+GitHub launched in 2018-04-10.
+```
+
+**pattern:**
+
+```json
+[
+  "GitHub"
+]
+```
+
+**results:** 2 hits
+```markdown
+**GitHub** is a web-based hosting service for version control using git.
+It is mostly used for computer code.
+**GitHub** launched in 2018-04-10.
+```
+
+### Ignore Case match
+
+**text:**
+```markdown
+GitHub is a web-based hosting service for version control using git.
+It is mostly used for computer code.
+GitHub launched in 2018-04-10.
+```
+
+**pattern:**
+
+```json
+[
+  "/git/i"
+]
+```
+
+**results:**: 3 hits
+```markdown
+**Git**Hub is a web-based hosting service for version control using **git**.
+It is mostly used for computer code.
+**Git**Hub launched in 2018-04-10.
+```
+
+### Special character
+
+You should escape special charactor like `\d` in RegExp-like string.
+
+**text:**
+```markdown
+GitHub is a web-based hosting service for version control using git.
+It is mostly used for computer code.
+GitHub launched in 2018-04-10.
+```
+
+**pattern:**
+```json
+[
+  "/\\d{4}-\\d{2}-\\d{2}/"
+]
+```
+
+**results:**: 1 hit
+```markdown
+GitHub is a web-based hosting service for version control using git.
+It is mostly used for computer code.
+GitHub launched in **2018-04-10**.
+```
+
+### Multi-line
+
+
+**text:**
+```markdown
+===START===
+1st inline text.
+===END===
+
+===START===
+2nd inline text.
+===END===
+```
+
+**pattern:**
+```json
+[
+  "/===START===[\\s\\S]*?===END===/m"
+]
+
+```
+
+**results:**: 2 hits
+```markdown
+**===START===
+1st inline text.
+===END===**
+
+**===START===
+2nd inline text.
+===END===**
+```
+
 
 ## Changelog
 

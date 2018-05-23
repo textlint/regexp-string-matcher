@@ -6,7 +6,7 @@
 ```
 **Git**Hub is a web-based hosting service for version control using git.
 It is mostly used for computer code.
-GitHub launched in Apr 10, 2008.
+GitHub launched in 2018-04-10.
 
 ```
 
@@ -19,7 +19,7 @@ GitHub launched in Apr 10, 2008.
 ```
 GitHub is a web-based hosting service for version control using **git**.
 It is mostly used for computer code.
-GitHub launched in Apr 10, 2008.
+GitHub launched in 2018-04-10.
 
 ```
 
@@ -32,7 +32,7 @@ GitHub launched in Apr 10, 2008.
 ```
 GitHub is a web-based hosting service for version control using git.
 It is mostly used for computer code.
-**Git**Hub launched in Apr 10, 2008.
+**Git**Hub launched in 2018-04-10.
 
 ```
 
