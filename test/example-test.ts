@@ -28,6 +28,5 @@ it("example", () => {
     const inputPatterns = ["a \\w+"];
 
     const results = matchPatterns(inputText, inputPatterns);
-    console.log(results);
     assert.deepStrictEqual(results, [{ match: "a pen", startIndex: 8, endIndex: 13 }]);
 });
