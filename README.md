@@ -202,6 +202,8 @@ GitHub launched in **2018-04-10**.
 ```
 
 
+For more details, see [test/snapshots](./test/snapshots)
+
 ## Changelog
 
 See [Releases page](https://github.com/textlint/regexp-string-matcher/releases).
