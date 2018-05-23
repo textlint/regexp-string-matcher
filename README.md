@@ -1,4 +1,4 @@
-# @textlint/regexp-string-matcher
+# @textlint/regexp-string-matcher [![Build Status](https://travis-ci.org/textlint/regexp-string-matcher.svg?branch=master)](https://travis-ci.org/textlint/regexp-string-matcher)
 
 Regexp-like string matcher library.
 
