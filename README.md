@@ -84,7 +84,7 @@ RegExp-like String:
 
 ```json
 [
-    "a \\w+"
+    "/a \\w+/"
 ]
 ```
 

@@ -22,10 +22,10 @@ GitHub launched in 2018-04-10.`;
     ]);
 });
 
-it("example", () => {
+it("RegExp-like string", () => {
     const inputText = `This is a pen.`;
     // RegExp like strings
-    const inputPatterns = ["a \\w+"];
+    const inputPatterns = ["/a \\w+/"];
 
     const results = matchPatterns(inputText, inputPatterns);
     assert.deepStrictEqual(results, [{ match: "a pen", startIndex: 8, endIndex: 13 }]);

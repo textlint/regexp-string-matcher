@@ -1,23 +1,12 @@
 import uniq = require("lodash.uniq");
 import uniqWith = require("lodash.uniqwith");
 import sortBy = require("lodash.sortby");
+import escapeStringRegexp = require("escape-string-regexp");
+import { isRegExpString, parseRegExpString } from "./regexp-parse";
 
 const execall = require("execall");
 const toRegex = require("to-regex");
-const REGEXP_LITERAL_PATTERN = /^\/(.*)\/([guimy]*)$/;
-const parseRegExpString = (str: string): { source: string; flagString: string } | null => {
-    const result = str.match(REGEXP_LITERAL_PATTERN);
-    if (!result) {
-        return null;
-    }
-    return {
-        source: result[1],
-        flagString: result[2]
-    };
-};
-const isRegExpString = (str: string): boolean => {
-    return REGEXP_LITERAL_PATTERN.test(str);
-};
+
 const DEFAULT_FLAGS = "g";
 
 const defaultFlags = (flagsString: string) => {
@@ -35,7 +24,7 @@ export interface matchPatternResult {
 
 const createRegExp = (patternString: string): RegExp => {
     if (patternString.length === 0) {
-        throw new Error("Emtpy string can not includes");
+        throw new Error("Empty string can not includes");
     }
     if (isRegExpString(patternString)) {
         const regExpStructure = parseRegExpString(patternString);
@@ -47,10 +36,7 @@ const createRegExp = (patternString: string): RegExp => {
         }
         throw new Error(`"${patternString}" can not parse as RegExp.`);
     } else {
-        return toRegex(patternString, {
-            flags: DEFAULT_FLAGS,
-            contains: true
-        });
+        return new RegExp(escapeStringRegexp(patternString), DEFAULT_FLAGS);
     }
 };
 

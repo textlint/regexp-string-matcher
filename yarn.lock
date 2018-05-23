@@ -22,6 +22,10 @@
   dependencies:
     any-observable "^0.3.0"
 
+"@types/escape-string-regexp@^0.0.32":
+  version "0.0.32"
+  resolved "https://registry.yarnpkg.com/@types/escape-string-regexp/-/escape-string-regexp-0.0.32.tgz#296005808f51d27fb2a2de8d1ca080a91ee3375c"
+
 "@types/lodash.sortby@^4.7.3":
   version "4.7.3"
   resolved "https://registry.yarnpkg.com/@types/lodash.sortby/-/lodash.sortby-4.7.3.tgz#d1f7a7fd955246e685a7541ac184dc058c553eb5"
