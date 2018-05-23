@@ -2,8 +2,9 @@ import { matchPatterns } from "../src/regexp-string-matcher";
 import * as assert from "assert";
 
 it("example", () => {
-    const inputText = `
-GitHub is a web-based hosting service for version control using git. It is mostly used for computer code. GitHub launched in 2018-04-10.`;
+    const inputText = `GitHub is a web-based hosting service for version control using git.
+It is mostly used for computer code.
+GitHub launched in 2018-04-10.`;
     // RegExp like strings
     const inputPatterns = [
         "git", // => /git/g
