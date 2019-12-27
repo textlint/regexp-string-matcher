@@ -22,9 +22,9 @@ export interface matchPatternResult {
     endIndex: number;
 }
 
-const createRegExp = (patternString: string): RegExp => {
+export const createRegExp = (patternString: string, defaultFlag: string = DEFAULT_FLAGS): RegExp => {
     if (patternString.length === 0) {
-        throw new Error("Empty string can not includes");
+        throw new Error("Empty string can not handled");
     }
     if (isRegExpString(patternString)) {
         const regExpStructure = parseRegExpString(patternString);
@@ -36,7 +36,7 @@ const createRegExp = (patternString: string): RegExp => {
         }
         throw new Error(`"${patternString}" can not parse as RegExp.`);
     } else {
-        return new RegExp(escapeStringRegexp(patternString), DEFAULT_FLAGS);
+        return new RegExp(escapeStringRegexp(patternString), defaultFlag);
     }
 };
 
