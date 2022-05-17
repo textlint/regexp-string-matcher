@@ -1,16 +1,19 @@
 [
     {
         "match": "💩",
+        "captures": [],
         "startIndex": 3,
         "endIndex": 5
     },
     {
         "match": "💩",
+        "captures": [],
         "startIndex": 7,
         "endIndex": 9
     },
     {
         "match": "💩",
+        "captures": [],
         "startIndex": 11,
         "endIndex": 13
     }

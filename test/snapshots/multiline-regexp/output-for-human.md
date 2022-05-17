@@ -2,6 +2,7 @@
 - match text: **===START===
 1st inline text.
 ===END===**
+- captures: **[]**
 - startIndex: **0**
 - endIndex: **38**
 
@@ -30,6 +31,7 @@ multi line text.
 - match text: **===START===
 2nd inline text.
 ===END===**
+- captures: **[]**
 - startIndex: **48**
 - endIndex: **86**
 
@@ -59,6 +61,7 @@ multi line text.
 3rd text.
 multi line text.
 ===END===**
+- captures: **[]**
 - startIndex: **96**
 - endIndex: **144**
 

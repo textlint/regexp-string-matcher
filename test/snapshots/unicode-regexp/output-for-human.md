@@ -1,5 +1,6 @@
 
 - match text: **💩**
+- captures: **[]**
 - startIndex: **3**
 - endIndex: **5**
 
@@ -11,6 +12,7 @@
 
 
 - match text: **💩**
+- captures: **[]**
 - startIndex: **7**
 - endIndex: **9**
 
@@ -22,6 +24,7 @@
 
 
 - match text: **💩**
+- captures: **[]**
 - startIndex: **11**
 - endIndex: **13**
 

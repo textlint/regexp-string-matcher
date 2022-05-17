@@ -1,21 +1,25 @@
 [
     {
         "match": "git",
+        "captures": [],
         "startIndex": 64,
         "endIndex": 67
     },
     {
         "match": "2018",
+        "captures": [],
         "startIndex": 125,
         "endIndex": 129
     },
     {
         "match": "04",
+        "captures": [],
         "startIndex": 130,
         "endIndex": 132
     },
     {
         "match": "10",
+        "captures": [],
         "startIndex": 133,
         "endIndex": 135
     }
