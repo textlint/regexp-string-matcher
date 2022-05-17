@@ -5,7 +5,7 @@ import escapeStringRegexp from "escape-string-regexp";
 import { isRegExpString, parseRegExpString } from "./regexp-parse";
 import toRegex from "to-regex";
 
-const DEFAULT_FLAGS = "g";
+const DEFAULT_FLAGS = "ug";
 
 const defaultFlags = (flagsString: string) => {
     if (flagsString.length === 0) {
