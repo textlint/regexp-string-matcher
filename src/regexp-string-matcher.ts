@@ -1,11 +1,11 @@
-import uniq = require("lodash.uniq");
-import uniqWith = require("lodash.uniqwith");
-import sortBy = require("lodash.sortby");
-import escapeStringRegexp = require("escape-string-regexp");
+import uniq from "lodash.uniq";
+import uniqWith from "lodash.uniqwith";
+import sortBy from "lodash.sortby";
+import escapeStringRegexp from "escape-string-regexp";
 import { isRegExpString, parseRegExpString } from "./regexp-parse";
 
-const execall = require("execall");
-const toRegex = require("to-regex");
+import execall from "execall";
+import toRegex from "to-regex";
 
 const DEFAULT_FLAGS = "g";
 
@@ -56,7 +56,7 @@ export const matchPatterns = (text: string, regExpLikeStrings: string[]): matchP
         })
         .forEach((regExp) => {
             const execallResults = execall(regExp, text);
-            execallResults.forEach((result: { match: string; index: number; sub: string[] }) => {
+            execallResults.forEach((result) => {
                 const match = result.match;
                 const index = result.index;
                 matchPatternResults.push({
