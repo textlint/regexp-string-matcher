@@ -53,20 +53,20 @@ assert.deepStrictEqual(results, [
 ## RegExp-like String
 
 This library aim to represent RegExp in JSON and use it for ignoring words.
-`g`(global) flag is added by default, Because ignoring words is always global in a document.
+`g`(global) flag and `u`(unicode) is added by default.
 
-
-| Input | Ouput | Note|
-| ---- | ---| --- |
-| `"str"` | `/str/g`| convert string to regexp with global |
-| `"/str/"` | `/str/g`| |
-| `"/str/g"` | `/str/g`| Duplicated `g` is just ignored |
-| `"/str/i"` | `/str/ig`| |
-| `"/str/u"` | `/str/ug`| |
-| `"/str/m"` | `/str/mg`| |
-| `"/str/y"` | `/str/yg`| |
-| ---|---| --- |
-| `"/\\d+/"` | `/\d+/g`| You should escape meta character like `\d` |
+| Input        | Ouput   | Note                                       |
+|--------------|---------|--------------------------------------------|
+| `"str"`      | `/str/gu` | convert string to regexp with global       |
+| `"/str/"`    | `/str/gu` |                                            |
+| `"/str/g"`   | `/str/gu` | Duplicated `g` is just ignored             |
+| `"/str/i"`   | `/str/igu` |                                            |
+| `"/str/u"`   | `/str/ug` |                                            |
+| `"/str/m"`   | `/str/mgu` |                                            |
+| `"/str/y"`   | `/str/ygu` |                                            |
+| ---          | ---     | ---                                        |
+| `"/\\d+/"`   | `/\d+/gu` | You should escape meta character like `\d` |
+| `"/(\\d+)/"` | `/\d+/gu` | You can use capture                        |
 
 :warning: You should escape meta character like `\d` in RegExp-like string.
 
