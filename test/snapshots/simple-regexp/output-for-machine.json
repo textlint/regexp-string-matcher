@@ -1,11 +1,13 @@
 [
     {
         "match": "GitHub",
+        "captures": [],
         "startIndex": 0,
         "endIndex": 6
     },
     {
         "match": "GitHub",
+        "captures": [],
         "startIndex": 106,
         "endIndex": 112
     }

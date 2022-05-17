@@ -1,5 +1,6 @@
 
 - match text: **git**
+- captures: **[]**
 - startIndex: **64**
 - endIndex: **67**
 
@@ -13,6 +14,7 @@ GitHub launched in 2018-04-10.
 
 
 - match text: **2018**
+- captures: **[]**
 - startIndex: **125**
 - endIndex: **129**
 
@@ -26,6 +28,7 @@ GitHub launched in **2018**-04-10.
 
 
 - match text: **04**
+- captures: **[]**
 - startIndex: **130**
 - endIndex: **132**
 
@@ -39,6 +42,7 @@ GitHub launched in 2018-**04**-10.
 
 
 - match text: **10**
+- captures: **[]**
 - startIndex: **133**
 - endIndex: **135**
 

@@ -1,26 +1,31 @@
 [
     {
         "match": "Eメール",
+        "captures": [],
         "startIndex": 3,
         "endIndex": 7
     },
     {
         "match": "X軸",
+        "captures": [],
         "startIndex": 9,
         "endIndex": 11
     },
     {
         "match": "Y軸",
+        "captures": [],
         "startIndex": 12,
         "endIndex": 14
     },
     {
         "match": "X座標",
+        "captures": [],
         "startIndex": 22,
         "endIndex": 25
     },
     {
         "match": "C言語",
+        "captures": [],
         "startIndex": 29,
         "endIndex": 32
     }

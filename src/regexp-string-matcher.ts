@@ -3,8 +3,6 @@ import uniqWith from "lodash.uniqwith";
 import sortBy from "lodash.sortby";
 import escapeStringRegexp from "escape-string-regexp";
 import { isRegExpString, parseRegExpString } from "./regexp-parse";
-
-import execall from "execall";
 import toRegex from "to-regex";
 
 const DEFAULT_FLAGS = "g";
@@ -18,6 +16,9 @@ const defaultFlags = (flagsString: string) => {
 
 export interface matchPatternResult {
     match: string;
+    // captured results
+    // [$1, $2 ...]
+    captures: string[];
     startIndex: number;
     endIndex: number;
 }
@@ -55,12 +56,16 @@ export const matchPatterns = (text: string, regExpLikeStrings: string[]): matchP
             return createRegExp(patternString);
         })
         .forEach((regExp) => {
-            const execallResults = execall(regExp, text);
-            execallResults.forEach((result) => {
-                const match = result.match;
+            const results = text.matchAll(regExp);
+            Array.from(results).forEach((result) => {
+                if (result.index === undefined) {
+                    return;
+                }
+                const match = result[0];
                 const index = result.index;
                 matchPatternResults.push({
                     match: match,
+                    captures: result.slice(1), // without match all text - [$1, $2 ...]
                     startIndex: index,
                     endIndex: index + match.length
                 });

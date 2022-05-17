@@ -28,6 +28,7 @@ describe("Snapshot testing", () => {
                 .map((result) => {
                     return `
 - match text: **${result.match}**
+- captures: **${JSON.stringify(result.captures)}**
 - startIndex: **${result.startIndex}**
 - endIndex: **${result.endIndex}**
 

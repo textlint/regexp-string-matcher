@@ -1,5 +1,6 @@
 
 - match text: **Eメール**
+- captures: **[]**
 - startIndex: **3**
 - endIndex: **7**
 
@@ -13,6 +14,7 @@ X軸とY軸を見る。
 
 
 - match text: **X軸**
+- captures: **[]**
 - startIndex: **9**
 - endIndex: **11**
 
@@ -26,6 +28,7 @@ X軸とY軸を見る。
 
 
 - match text: **Y軸**
+- captures: **[]**
 - startIndex: **12**
 - endIndex: **14**
 
@@ -39,6 +42,7 @@ X軸と**Y軸**を見る。
 
 
 - match text: **X座標**
+- captures: **[]**
 - startIndex: **22**
 - endIndex: **25**
 
@@ -52,6 +56,7 @@ X軸とY軸を見る。
 
 
 - match text: **C言語**
+- captures: **[]**
 - startIndex: **29**
 - endIndex: **32**
 

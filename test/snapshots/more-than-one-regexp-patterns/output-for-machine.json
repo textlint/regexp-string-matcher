@@ -1,16 +1,19 @@
 [
     {
         "match": "GitHub",
+        "captures": [],
         "startIndex": 0,
         "endIndex": 6
     },
     {
         "match": "git",
+        "captures": [],
         "startIndex": 64,
         "endIndex": 67
     },
     {
         "match": "GitHub",
+        "captures": [],
         "startIndex": 106,
         "endIndex": 112
     }
