@@ -51,10 +51,10 @@ const isEqualMatchPatternResult = (a: matchPatternResult, b: matchPatternResult)
 export const matchPatterns = (text: string, regExpLikeStrings: string[]): matchPatternResult[] => {
     const matchPatternResults: matchPatternResult[] = [];
     regExpLikeStrings
-        .map(patternString => {
+        .map((patternString) => {
             return createRegExp(patternString);
         })
-        .forEach(regExp => {
+        .forEach((regExp) => {
             const execallResults = execall(regExp, text);
             execallResults.forEach((result: { match: string; index: number; sub: string[] }) => {
                 const match = result.match;

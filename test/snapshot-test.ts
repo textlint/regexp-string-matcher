@@ -15,8 +15,8 @@ const fixturesDir = path.join(__dirname, "snapshots");
  *
  */
 describe("Snapshot testing", () => {
-    fs.readdirSync(fixturesDir).map(caseName => {
-        it(`Test ${caseName}`, async function() {
+    fs.readdirSync(fixturesDir).map((caseName) => {
+        it(`Test ${caseName}`, async function () {
             const fixtureDir = path.join(fixturesDir, caseName);
             const inputText: string = fs.readFileSync(path.join(fixtureDir, "input.txt"), "utf-8");
             const inputPatterns: string[] = require(path.join(fixtureDir, "input-patterns.json"));
@@ -25,7 +25,7 @@ describe("Snapshot testing", () => {
             const outputForMachinePath = path.join(fixtureDir, "output-for-machine.json");
 
             const humanResult = results
-                .map(result => {
+                .map((result) => {
                     return `
 - match text: **${result.match}**
 - startIndex: **${result.startIndex}**
