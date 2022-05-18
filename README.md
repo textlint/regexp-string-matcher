@@ -205,6 +205,28 @@ GitHub launched in **2018-04-10**.
 
 For more details, see [test/snapshots](./test/snapshots)
 
+### Escape bracket
+
+**text:**
+```markdown
+TODO [Issue #1]: it will be fixed
+```
+
+**patterns:**
+```json
+[
+  "/TODO \\[Issue #\\d+\\]:/i"
+]
+```
+
+:memo: You should escape bracket both. `\\[` and `\\]`,
+
+**results:**
+
+**TODO [Issue #1]:** it will be fixed
+```
+
+
 ## Changelog
 
 See [Releases page](https://github.com/textlint/regexp-string-matcher/releases).
