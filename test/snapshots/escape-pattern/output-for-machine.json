@@ -1,0 +1,8 @@
+[
+    {
+        "match": "TODO [Issue #1]:",
+        "captures": [],
+        "startIndex": 0,
+        "endIndex": 16
+    }
+]

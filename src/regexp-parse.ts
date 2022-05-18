@@ -1,5 +1,5 @@
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions#advanced_searching_with_flags
-const REGEXP_LITERAL_PATTERN = /^\/(.*)\/([guimysd]*)$/;
+const REGEXP_LITERAL_PATTERN = /^\/(.+)\/([guimysd]*)$/;
 export const parseRegExpString = (str: string): { source: string; flagString: string } | null => {
     const result = str.match(REGEXP_LITERAL_PATTERN);
     if (!result) {

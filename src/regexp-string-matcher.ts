@@ -3,7 +3,6 @@ import uniqWith from "lodash.uniqwith";
 import sortBy from "lodash.sortby";
 import escapeStringRegexp from "escape-string-regexp";
 import { isRegExpString, parseRegExpString } from "./regexp-parse";
-import toRegex from "to-regex";
 
 const DEFAULT_FLAGS = "ug";
 
@@ -30,10 +29,7 @@ export const createRegExp = (patternString: string, defaultFlag: string = DEFAUL
     if (isRegExpString(patternString)) {
         const regExpStructure = parseRegExpString(patternString);
         if (regExpStructure) {
-            return toRegex(regExpStructure.source, {
-                flags: defaultFlags(regExpStructure.flagString),
-                contains: true
-            });
+            return new RegExp(regExpStructure.source, defaultFlags(regExpStructure.flagString));
         }
         throw new Error(`"${patternString}" can not parse as RegExp.`);
     } else {
