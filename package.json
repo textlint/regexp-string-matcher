@@ -1,6 +1,6 @@
 {
   "name": "@textlint/regexp-string-matcher",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Regexp-like string matcher.",
   "keywords": [
     "helper",
