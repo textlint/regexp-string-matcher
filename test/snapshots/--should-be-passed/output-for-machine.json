@@ -1,0 +1,8 @@
+[
+    {
+        "match": "foo-bar",
+        "captures": [],
+        "startIndex": 0,
+        "endIndex": 7
+    }
+]
