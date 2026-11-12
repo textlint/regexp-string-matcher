@@ -65,7 +65,5 @@
       "prettier --write"
     ]
   },
-  "dependencies": {
-    "escape-string-regexp": "^4.0.0"
-  }
+  "dependencies": {}
 }

@@ -1,7 +1,18 @@
-import escapeStringRegexp from "escape-string-regexp";
 import { isRegExpString, parseRegExpString } from "./regexp-parse";
 
 const DEFAULT_FLAGS = "ug";
+
+/**
+ * Escape RegExp special characters.
+ * Same as escape-string-regexp@4
+ * https://github.com/sindresorhus/escape-string-regexp/blob/v4.0.0/index.js
+ * TODO: Replace with RegExp.escape when supported Node.js versions are >= 24
+ */
+const escapeStringRegexp = (string: string): string => {
+    // Use a simple backslash escape when it's always valid,
+    // and a \xnn escape when the simpler form would be disallowed by Unicode patterns' stricter grammar.
+    return string.replace(/[|\\{}()[\]^$+*?.]/g, "\\$&").replace(/-/g, "\\x2d");
+};
 
 const defaultFlags = (flagsString: string) => {
     if (flagsString.length === 0) {
