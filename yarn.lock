@@ -55,32 +55,6 @@
   resolved "https://registry.yarnpkg.com/@tsconfig/node16/-/node16-1.0.2.tgz#423c77877d0569db20e1fc80885ac4118314010e"
   integrity sha512-eZxlbI8GZscaGS7kkc/trHTT5xgrjH3/1n2JDwusC9iahPKWMRvRjJSAN5mCXviuTGQ/lHnhvv8Q1YTpnfz9gA==
 
-"@types/lodash.sortby@^4.7.3":
-  version "4.7.7"
-  resolved "https://registry.yarnpkg.com/@types/lodash.sortby/-/lodash.sortby-4.7.7.tgz#10bf6eecd4d69aacb87e093e65bd4eb5a13b0237"
-  integrity sha512-J/4IS+jQopGBrrRetBXDCX0KnSeXJZ0rOTmGAxR9MWGV24YdHxX8IRi9LCGAU9GKWlBov9KRSfQpuup9PReqrw==
-  dependencies:
-    "@types/lodash" "*"
-
-"@types/lodash.uniq@^4.5.3":
-  version "4.5.7"
-  resolved "https://registry.yarnpkg.com/@types/lodash.uniq/-/lodash.uniq-4.5.7.tgz#0773960ec0148b29e6a54821a65b878a0ebb5c1a"
-  integrity sha512-qg7DeAbdZMi6DGvCxThlJycykLLhETrJrQZ6F2KaZ+o0sNK1qRHz46lgNA+nHHjwrmA2a91DyiZTp3ey3m1rEw==
-  dependencies:
-    "@types/lodash" "*"
-
-"@types/lodash.uniqwith@^4.5.3":
-  version "4.5.7"
-  resolved "https://registry.yarnpkg.com/@types/lodash.uniqwith/-/lodash.uniqwith-4.5.7.tgz#912b0da89f9add52ccdba9de8a673c05fd33e60b"
-  integrity sha512-qg55yHtu/t9S7J1dEcipoD7Oqr5lwVJxwIicRCJ8yabBNv6T9DpIxhWuVIAUdewxYeEl0mNKSnZHQXTw7Owmug==
-  dependencies:
-    "@types/lodash" "*"
-
-"@types/lodash@*":
-  version "4.14.182"
-  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.182.tgz#05301a4d5e62963227eaafe0ce04dd77c54ea5c2"
-  integrity sha512-/THyiqyQAP9AfARo4pF+aCGcyiQ94tX/Is2I7HofNRqoYLgN1PBoOWu2/zTA5zMxzP5EFutMtWtGAFRKUe961Q==
-
 "@types/mocha@^9.1.1":
   version "9.1.1"
   resolved "https://registry.yarnpkg.com/@types/mocha/-/mocha-9.1.1.tgz#e7c4f1001eefa4b8afbd1eee27a237fee3bf29c4"
@@ -680,21 +654,6 @@ locate-path@^6.0.0:
   integrity sha512-iPZK6eYjbxRu3uB4/WZ3EsEIMJFMqAoopl3R+zuq0UjcAm/MO6KCweDgPfP3elTztoKP3KtnVHxTn2NHBSDVUw==
   dependencies:
     p-locate "^5.0.0"
-
-lodash.sortby@^4.7.0:
-  version "4.7.0"
-  resolved "https://registry.yarnpkg.com/lodash.sortby/-/lodash.sortby-4.7.0.tgz#edd14c824e2cc9c1e0b0a1b42bb5210516a42438"
-  integrity sha1-7dFMgk4sycHgsKG0K7UhBRakJDg=
-
-lodash.uniq@^4.5.0:
-  version "4.5.0"
-  resolved "https://registry.yarnpkg.com/lodash.uniq/-/lodash.uniq-4.5.0.tgz#d0225373aeb652adc1bc82e4945339a842754773"
-  integrity sha1-0CJTc662Uq3BvILklFM5qEJ1R3M=
-
-lodash.uniqwith@^4.5.0:
-  version "4.5.0"
-  resolved "https://registry.yarnpkg.com/lodash.uniqwith/-/lodash.uniqwith-4.5.0.tgz#7a0cbf65f43b5928625a9d4d0dc54b18cadc7ef3"
-  integrity sha1-egy/ZfQ7WShiWp1NDcVLGMrcfvM=
 
 log-symbols@4.1.0:
   version "4.1.0"

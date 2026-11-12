@@ -1,6 +1,3 @@
-import uniq from "lodash.uniq";
-import uniqWith from "lodash.uniqwith";
-import sortBy from "lodash.sortby";
 import escapeStringRegexp from "escape-string-regexp";
 import { isRegExpString, parseRegExpString } from "./regexp-parse";
 
@@ -10,7 +7,7 @@ const defaultFlags = (flagsString: string) => {
     if (flagsString.length === 0) {
         return DEFAULT_FLAGS;
     }
-    return uniq((flagsString + DEFAULT_FLAGS).split("")).join("");
+    return Array.from(new Set((flagsString + DEFAULT_FLAGS).split(""))).join("");
 };
 
 export interface matchPatternResult {
@@ -67,6 +64,15 @@ export const matchPatterns = (text: string, regExpLikeStrings: string[]): matchP
                 });
             });
         });
-    const uniqResults = uniqWith(matchPatternResults, isEqualMatchPatternResult);
-    return sortBy(uniqResults, ["startIndex", "endIndex"]);
+    // remove duplicated results (keep the first one)
+    const uniqResults = matchPatternResults.filter((result, index) => {
+        return matchPatternResults.findIndex((other) => isEqualMatchPatternResult(result, other)) === index;
+    });
+    // sort by startIndex, then endIndex (Array.prototype.sort is stable since ES2019)
+    return uniqResults.sort((a, b) => {
+        if (a.startIndex !== b.startIndex) {
+            return a.startIndex - b.startIndex;
+        }
+        return a.endIndex - b.endIndex;
+    });
 };
