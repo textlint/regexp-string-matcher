@@ -45,42 +45,45 @@ export const createRegExp = (patternString: string, defaultFlag: string = DEFAUL
     }
 };
 
-const isEqualMatchPatternResult = (a: matchPatternResult, b: matchPatternResult): boolean => {
-    return a.startIndex === b.startIndex && a.endIndex === b.endIndex && a.match === b.match;
-};
 /**
  * Match regExpLikeStrings and return matchPatternResults
  * @param text target text
  * @param regExpLikeStrings an array of pattern string
  */
 export const matchPatterns = (text: string, regExpLikeStrings: string[]): matchPatternResult[] => {
+    // Create all RegExp first. An invalid pattern throws before matching, as before.
+    const regExps = regExpLikeStrings.map((patternString) => createRegExp(patternString));
     const matchPatternResults: matchPatternResult[] = [];
-    regExpLikeStrings
-        .map((patternString) => {
-            return createRegExp(patternString);
-        })
-        .forEach((regExp) => {
-            const results = text.matchAll(regExp);
-            Array.from(results).forEach((result) => {
-                if (result.index === undefined) {
-                    return;
-                }
-                const match = result[0];
-                const index = result.index;
-                matchPatternResults.push({
-                    match: match,
-                    captures: result.slice(1), // without match all text - [$1, $2 ...]
-                    startIndex: index,
-                    endIndex: index + match.length
-                });
+    // A match is `text.slice(startIndex, endIndex)`, so results with the same startIndex and endIndex are duplicated.
+    // Remove duplicated results (keep the first one)
+    const seen = new Set<string>();
+    regExps.forEach((regExp) => {
+        const results = text.matchAll(regExp);
+        let next = results.next();
+        while (!next.done) {
+            const result = next.value;
+            next = results.next();
+            if (result.index === undefined) {
+                continue;
+            }
+            const match = result[0];
+            const index = result.index;
+            const endIndex = index + match.length;
+            const key = `${index}:${endIndex}`;
+            if (seen.has(key)) {
+                continue;
+            }
+            seen.add(key);
+            matchPatternResults.push({
+                match: match,
+                captures: result.slice(1), // without match all text - [$1, $2 ...]
+                startIndex: index,
+                endIndex: endIndex
             });
-        });
-    // remove duplicated results (keep the first one)
-    const uniqResults = matchPatternResults.filter((result, index) => {
-        return matchPatternResults.findIndex((other) => isEqualMatchPatternResult(result, other)) === index;
+        }
     });
     // sort by startIndex, then endIndex (Array.prototype.sort is stable since ES2019)
-    return uniqResults.sort((a, b) => {
+    return matchPatternResults.sort((a, b) => {
         if (a.startIndex !== b.startIndex) {
             return a.startIndex - b.startIndex;
         }
