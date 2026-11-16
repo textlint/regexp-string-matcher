@@ -45,25 +45,6 @@ export const createRegExp = (patternString: string, defaultFlag: string = DEFAUL
     }
 };
 
-// Cache of RegExp objects created by matchPatterns.
-// matchPatterns is often called for every node with the same patterns, and creating RegExp each time is slow.
-// `String#matchAll` clones the RegExp, so the cached RegExp's `lastIndex` is never changed.
-// The cache is cleared when it grows too large, so it does not keep many unique patterns in memory.
-const MAX_REGEXP_CACHE_SIZE = 1000;
-const regExpCache = new Map<string, RegExp>();
-const getCachedRegExp = (patternString: string): RegExp => {
-    const cached = regExpCache.get(patternString);
-    if (cached !== undefined) {
-        return cached;
-    }
-    const regExp = createRegExp(patternString);
-    if (regExpCache.size >= MAX_REGEXP_CACHE_SIZE) {
-        regExpCache.clear();
-    }
-    regExpCache.set(patternString, regExp);
-    return regExp;
-};
-
 /**
  * Match regExpLikeStrings and return matchPatternResults
  * @param text target text
@@ -71,14 +52,11 @@ const getCachedRegExp = (patternString: string): RegExp => {
  */
 export const matchPatterns = (text: string, regExpLikeStrings: string[]): matchPatternResult[] => {
     // Create all RegExp first. An invalid pattern throws before matching, as before.
-    const regExps = regExpLikeStrings.map(getCachedRegExp);
+    const regExps = regExpLikeStrings.map((patternString) => createRegExp(patternString));
     const matchPatternResults: matchPatternResult[] = [];
     // A match is `text.slice(startIndex, endIndex)`, so results with the same startIndex and endIndex are duplicated.
     // Remove duplicated results (keep the first one)
-    const seen = new Set<number | string>();
-    const width = text.length + 1;
-    // Use a number key when `startIndex * width + endIndex` is a safe integer
-    const useNumberKey = width * width <= Number.MAX_SAFE_INTEGER;
+    const seen = new Set<string>();
     regExps.forEach((regExp) => {
         const results = text.matchAll(regExp);
         let next = results.next();
@@ -91,7 +69,7 @@ export const matchPatterns = (text: string, regExpLikeStrings: string[]): matchP
             const match = result[0];
             const index = result.index;
             const endIndex = index + match.length;
-            const key = useNumberKey ? index * width + endIndex : `${index}:${endIndex}`;
+            const key = `${index}:${endIndex}`;
             if (seen.has(key)) {
                 continue;
             }
