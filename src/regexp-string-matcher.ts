@@ -45,42 +45,67 @@ export const createRegExp = (patternString: string, defaultFlag: string = DEFAUL
     }
 };
 
-const isEqualMatchPatternResult = (a: matchPatternResult, b: matchPatternResult): boolean => {
-    return a.startIndex === b.startIndex && a.endIndex === b.endIndex && a.match === b.match;
+// Cache of RegExp objects created by matchPatterns.
+// matchPatterns is often called for every node with the same patterns, and creating RegExp each time is slow.
+// `String#matchAll` clones the RegExp, so the cached RegExp's `lastIndex` is never changed.
+// The cache is cleared when it grows too large, so it does not keep many unique patterns in memory.
+const MAX_REGEXP_CACHE_SIZE = 1000;
+const regExpCache = new Map<string, RegExp>();
+const getCachedRegExp = (patternString: string): RegExp => {
+    const cached = regExpCache.get(patternString);
+    if (cached !== undefined) {
+        return cached;
+    }
+    const regExp = createRegExp(patternString);
+    if (regExpCache.size >= MAX_REGEXP_CACHE_SIZE) {
+        regExpCache.clear();
+    }
+    regExpCache.set(patternString, regExp);
+    return regExp;
 };
+
 /**
  * Match regExpLikeStrings and return matchPatternResults
  * @param text target text
  * @param regExpLikeStrings an array of pattern string
  */
 export const matchPatterns = (text: string, regExpLikeStrings: string[]): matchPatternResult[] => {
+    // Create all RegExp first. An invalid pattern throws before matching, as before.
+    const regExps = regExpLikeStrings.map(getCachedRegExp);
     const matchPatternResults: matchPatternResult[] = [];
-    regExpLikeStrings
-        .map((patternString) => {
-            return createRegExp(patternString);
-        })
-        .forEach((regExp) => {
-            const results = text.matchAll(regExp);
-            Array.from(results).forEach((result) => {
-                if (result.index === undefined) {
-                    return;
-                }
-                const match = result[0];
-                const index = result.index;
-                matchPatternResults.push({
-                    match: match,
-                    captures: result.slice(1), // without match all text - [$1, $2 ...]
-                    startIndex: index,
-                    endIndex: index + match.length
-                });
+    // A match is `text.slice(startIndex, endIndex)`, so results with the same startIndex and endIndex are duplicated.
+    // Remove duplicated results (keep the first one)
+    const seen = new Set<number | string>();
+    const width = text.length + 1;
+    // Use a number key when `startIndex * width + endIndex` is a safe integer
+    const useNumberKey = width * width <= Number.MAX_SAFE_INTEGER;
+    regExps.forEach((regExp) => {
+        const results = text.matchAll(regExp);
+        let next = results.next();
+        while (!next.done) {
+            const result = next.value;
+            next = results.next();
+            if (result.index === undefined) {
+                continue;
+            }
+            const match = result[0];
+            const index = result.index;
+            const endIndex = index + match.length;
+            const key = useNumberKey ? index * width + endIndex : `${index}:${endIndex}`;
+            if (seen.has(key)) {
+                continue;
+            }
+            seen.add(key);
+            matchPatternResults.push({
+                match: match,
+                captures: result.slice(1), // without match all text - [$1, $2 ...]
+                startIndex: index,
+                endIndex: endIndex
             });
-        });
-    // remove duplicated results (keep the first one)
-    const uniqResults = matchPatternResults.filter((result, index) => {
-        return matchPatternResults.findIndex((other) => isEqualMatchPatternResult(result, other)) === index;
+        }
     });
     // sort by startIndex, then endIndex (Array.prototype.sort is stable since ES2019)
-    return uniqResults.sort((a, b) => {
+    return matchPatternResults.sort((a, b) => {
         if (a.startIndex !== b.startIndex) {
             return a.startIndex - b.startIndex;
         }
